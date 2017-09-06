@@ -3,10 +3,10 @@ var couchbase = require("couchbase");
 var fs = require('fs');
 var app = express();
 var async = require("async");
-var bucket = (new couchbase.Cluster("http://10.33.169.89:8091")).openBucket("StatsReporting");
+var bucket = (new couchbase.Cluster("http://<couchbase_host_name>:8091")).openBucket("<bucket_name>");
  
 var ViewQuery = couchbase.ViewQuery;
-var query = ViewQuery.from('dev_abc', 'def').full_set(true);
+var query = ViewQuery.from('dev_<view_folder>', '<view_name>').full_set(true);
  console.log(query)
  
 bucket.query(query, function(error, results) {
